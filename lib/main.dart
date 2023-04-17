@@ -6,9 +6,29 @@ void main() => runApp(const MyApp()); /*1*/
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
+  final bool _isTutorial = true;
+
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(title: 'Welcome to Flutter', home: RandomWords());
+    if (!_isTutorial) {
+      return const MaterialApp(title: 'Welcome to Flutter', home: RandomWords());
+    } else {
+      return MaterialApp(
+        title: 'Flutter Material Design',
+        home: Scaffold(
+          body: Center(
+            child: Container(
+              color: Colors.blue,
+              width: 300.0,
+              height: 300.0,
+              alignment: Alignment.center,
+              transform: Matrix4.rotationZ(0.1),
+              child: const Text('word'),
+            ),
+          ),
+        ),
+      );
+    }
   }
 }
 
